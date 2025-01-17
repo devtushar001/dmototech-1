@@ -37,23 +37,26 @@ app.use("/api/category", categoryRouter);
 app.use("/api/nested-category", nestedCtgRouter); // Adjusted route to avoid conflicts
 app.use("/catupload", express.static('catupload'));
 
-// Example: http://localhost:8000/catupload/menu_image-1733413564680-877237691.jpeg
-
-app.use("/api/order", orderRouter);
-
-// deployment process goes from here
+// Deployment process starts here
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-console.log(__dirname);
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+// Serve static files from the client build
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
-// handling for all other routes..
+// Serve static files from the admin build
+app.use('/admin', express.static(path.join(__dirname, 'admin', 'dist')));
+
+// Catch-all handler for client-side routing
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/dist/index.html'));
+  if (req.path.startsWith('/admin')) {
+    res.sendFile(path.join(__dirname, 'admin', 'dist', 'index.html'));
+  } else {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  }
 });
 
-// listenning server on port ...
+// Start the server
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
