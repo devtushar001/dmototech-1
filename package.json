@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install"
+    "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install --prefix ./admin && npm run build --prefix ./admin"
   },
-  "author": "",
+  "author": "Your Name",
   "license": "ISC",
-  "description": "",
+  "description": "Description of your project",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
