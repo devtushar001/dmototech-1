@@ -14,3 +14,6 @@ API_KEY = "4f5004e78b0a1ea0f3c82d467fb2626e"
 AUTH_KEY = "771693a33c28aac7a0ffc79ac7a2a87a"
 INSTA_API_URL = "https://www.instamojo.com/"
 REDIRECT_URL = "http://localhost:8000/success"
+
+
+package-lock.json
