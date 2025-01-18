@@ -37,7 +37,7 @@ app.use("/api/category", categoryRouter);
 app.use("/api/nested-category", nestedCtgRouter); // Adjusted route to avoid conflicts
 app.use("/catupload", express.static('catupload'));
 
-// Deployment process starts here
+// Determine directory paths
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
