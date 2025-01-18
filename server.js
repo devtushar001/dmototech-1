@@ -44,16 +44,9 @@ const __dirname = path.dirname(__filename);
 // Serve static files for the client frontend
 app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
-// Serve static files for the admin frontend
-app.use('/admin', express.static(path.join(__dirname, 'admin', 'dist')));
-
 // Catch-all handler for client-side routing
 app.get('*', (req, res) => {
-  if (req.path.startsWith('/admin')) {
-    res.sendFile(path.join(__dirname, 'admin', 'dist', 'index.html'));
-  } else {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-  }
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
 // Start the server
